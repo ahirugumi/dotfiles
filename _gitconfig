@@ -1,0 +1,14 @@
+[user]
+  name = ahirugumi
+  email = puts.helloworld@nifty.com
+[alias]
+  tree = log --graph --all --format=\"%x09%C(magenta ul)%an%Creset%x09%C(blue)%h%Creset %C(green reverse)%d%Creset %s\"
+[color]
+  ui = auto
+[core]
+  editor = vim
+[log]
+  decorate = short
+[filter "media"]
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f

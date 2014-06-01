@@ -1,0 +1,91 @@
+# PS1='\[\033[36m\][\u@\h:\[\033[33m\]\w\[\033[36m\]]\[\033[0m\] \$ '
+# PATH=/opt/local/lib/mysql5/bin:$PATH
+# export PATH
+# alias ls='ls -G'
+# alias ll='ls -l'
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# export LANG=ja_JP.UTF-8
+
+# ==============
+# common setting
+# ==============
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTFILESIZE=
+HISTSIZE=
+HISTTIMEFORMAT='%Y/%m/%d %H:%M:%S '
+HISTIGNORE=ls:history
+HISTIGNORE=?:??:???:exit
+HISTCONTROL=ignoredups:ignorespace
+function share_history {
+    history -a
+    history -c
+    history -r
+}
+PROMPT_COMMAND='share_history'
+#Historyは、上書きでなく追加
+shopt -u histappend
+#端末画面の自動認識
+shopt -s checkwinsize
+
+# alias
+
+case "${OSTYPE}" in
+darwin*)
+  alias ls='ls -CFG'
+  alias ll='ls -AlFhG'
+  alias la='ls -CFalG'
+  ;;
+linux*)
+  alias ls='ls -CF --color=auto'
+  alias ll='ls -AlFh --show-control-chars --color=auto'
+  alias la='ls -CFal --color=auto'
+  ;;
+esac
+
+
+
+alias mv='mv -i'
+alias rm='rm -i'
+alias cp='cp -i'
+alias ps='ps --sort=start_time'
+
+# =================
+# common env value
+# =================
+export LANG='ja_JP.UTF-8'
+export LC_ALL='ja_JP.UTF-8'
+export LC_MESSAGES='ja_JP.UTF-8'
+export LANGUAGE="ja:en"
+export LC_CTYPE="ja_JP.UTF-8"
+export LC_COLLATE="ja_JP.UTF-8"
+#prompt[history][command][job]time-user@host
+PS1="[\!][\#][\j]\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+
+set -o vi
+
+#PATH="$PATH:$HOME/.rvm/bin"
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# # for java develop
+# export JAVA_HOME=/usr/lib/jvm/jdk1.5.0_22
+# PATH="/usr/local/maven-2.0.4/bin:$JAVA_HOME/bin:$PATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
+# # python work path
+# export PYTHONPATH=~/work/mule_active_checker
+#
+# #tomcat option
+# export CATALINA_OPTS="-Xmx1024m -Xms1024m -Xss256k -server"
+
+case "${OSTYPE}" in
+darwin*)
+  export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+  alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+  alias vim="mvim --remote-tab-silent"
+  export PATH=/opt/local/bin:/opt/local/sbin:/Applications/MacVim.app/Contents/MacOS:/opt/local/lib/mysql5/bin:$HOME/.rbenv/bin:$PATH
+  eval "$(rbenv init -)"
+  me=/Volumes/tomohiro.tanaka
+  ;;
+linux*)
+  ;;
+esac
