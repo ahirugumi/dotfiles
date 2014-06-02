@@ -87,5 +87,8 @@ darwin*)
   me=/Volumes/tomohiro.tanaka
   ;;
 linux*)
+  export TERM=xterm-256color
+  #バックスペース対策
+  stty erase "^?"
   ;;
 esac
