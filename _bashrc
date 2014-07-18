@@ -53,6 +53,11 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -i'
 alias ps='ps --sort=start_time'
+case "${OSTYPE}" in
+darwin*)
+  alias sed='gsed'
+  ;;
+esac
 
 # =================
 # common env value
