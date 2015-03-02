@@ -72,7 +72,9 @@ set -o vi
 # export PATH="$HOME/.rbenv/bin:$PATH"
 # eval "$(rbenv init -)"
 # # python work path
-# export PYTHONPATH=~/work/mule_active_checker
+# export PYTHONPATH=~/work/svn_crawler/:~/work/jp1_crawler/:~/work/web_crawler/
+# export PYTHONPATH=~/work/operation_crawler/
+export PYTHONPATH=~/work/operation_crawler2/
 #
 # #tomcat option
 # export CATALINA_OPTS="-Xmx1024m -Xms1024m -Xss256k -server"
@@ -95,3 +97,5 @@ linux*)
   alias pbpaste='xclip -selection clipboard -o'
   ;;
 esac
+
+eval `dircolors ~/dotfiles/dircolors.ansi-light`
