@@ -40,6 +40,11 @@ linux*)
   alias ll='ls -AlFh --show-control-chars --color=auto'
   alias la='ls -CFal --color=auto'
   ;;
+cygwin*)
+  alias ls='ls -CF --color=auto'
+  alias ll='ls -AlFh --show-control-chars --color=auto'
+  alias la='ls -CFal --color=auto'
+  ;;
 esac
 
 
@@ -48,6 +53,11 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -i'
 alias ps='ps --sort=start_time'
+case "${OSTYPE}" in
+darwin*)
+  alias sed='gsed'
+  ;;
+esac
 
 # =================
 # common env value
@@ -87,6 +97,7 @@ darwin*)
   export PATH=/opt/local/bin:/opt/local/sbin:/Applications/MacVim.app/Contents/MacOS:/opt/local/lib/mysql5/bin:$HOME/.rbenv/bin:$PATH
   eval "$(rbenv init -)"
   me=/Volumes/tomohiro.tanaka
+  export PYTHONPATH=~/gitrepo/study/Python-Study/
   ;;
 linux*)
   export TERM=xterm-256color
@@ -95,6 +106,19 @@ linux*)
   #pbcopyの代替
   alias pbcopy='xclip -selection clipboard'
   alias pbpaste='xclip -selection clipboard -o'
+  ;;
+cygwin*)
+  # alias vim="gvim --remote-tab-silent"
+  source ~/_cygwin/sol.light
+  # for java develop
+  # export JAVA_HOME=/usr/lib/jvm/jdk1.5.0_22
+  #PATH="/usr/local/maven-2.0.4/bin:$JAVA_HOME/bin:$PATH"
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+  # python work path
+  export PYTHONPATH=~/work/mule_active_checker
+  #tomcat option
+  export CATALINA_OPTS="-Xmx1024m -Xms1024m -Xss256k -server"
   ;;
 esac
 
