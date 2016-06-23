@@ -94,8 +94,8 @@ darwin*)
   export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
   alias vim="mvim --remote-tab-silent"
-  export PATH=/opt/local/bin:/opt/local/sbin:/Applications/MacVim.app/Contents/MacOS:/opt/local/lib/mysql5/bin:$HOME/.rbenv/bin:$PATH
-  eval "$(rbenv init -)"
+#  export PATH=/opt/local/bin:/opt/local/sbin:/Applications/MacVim.app/Contents/MacOS:/opt/local/lib/mysql5/bin:$HOME/.rbenv/bin:$PATH
+#  eval "$(rbenv init -)"
   me=/Volumes/tomohiro.tanaka
   export PYTHONPATH=~/gitrepo/study/Python-Study/
   ;;
@@ -122,4 +122,4 @@ cygwin*)
   ;;
 esac
 
-eval `dircolors ~/dotfiles/dircolors.ansi-light`
+eval `gdircolors ~/dotfiles/dircolors.ansi-light`

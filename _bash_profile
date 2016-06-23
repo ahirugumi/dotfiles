@@ -1,8 +1,17 @@
 if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
-if [ -d $HOME/.rbenv/bin ]; then
-  export RBENV_ROOT=$HOME/.rbenv
-  export PATH="$RBENV_ROOT/bin:$PATH"
-  eval "$(rbenv init -)"
+
+#if [ -d $HOME/.rbenv/bin ]; then
+#  export RBENV_ROOT=$HOME/.rbenv
+#  export PATH="$RBENV_ROOT/bin:$PATH"
+#  eval "$(rbenv init -)"
+#fi
+
+## Set path for pyenv
+export PYENV_ROOT="${HOME}/.pyenv"
+if [ -d "${PYENV_ROOT}" ]; then
+  export PATH=${PYENV_ROOT}/bin:$PATH
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 fi
