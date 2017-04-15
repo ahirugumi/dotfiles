@@ -58,10 +58,6 @@ end
 # encoding
 set -x LANG ja_JP.UTF-8
 
-function fish_prompt --description 'Write out the prompt'
-   printf '%s%s%s@%s%s%s%s\n> ' (set_color --bold magenta) (whoami) (set_color normal) (set_color blue) (echo $PWD) (set_color normal) (__fish_git_prompt)
-end
-
 function fish_user_key_bindings
   for mode in insert default visual
     fish_default_key_bindings -M $mode
@@ -74,41 +70,21 @@ end
 set git_dirty_color red
 set git_not_dirty_color green
 
-# fish git prompt
-#### 変更がないとき
-###bisco@bisco-server /home/bisco/dotfiles (master|✔)
-#### 未トラックのファイルが1つあるとき
-###bisco@bisco-server /home/bisco/dotfiles (master|…1)
-#### addしていないファイルが1つ、未トラックのファイルが1つあるとき
-###bisco@bisco-server /home/bisco/dotfiles (master|✚1…1)
-#### addしたファイルが1つあるとき
-###bisco@bisco-server /home/bisco/dotfiles (master|●1)
-#### リモートブランチよりも1つコミットが進んでいるとき
-###bisco@bisco-server /home/bisco/dotfiles (master↑1|✔)
-#### リモートブランチよりも1つコミットが遅れているとき
-###bisco@bisco-server /home/bisco/dotfiles (master↓1|✔)
-#set __fish_git_prompt_showdirtystate 'yes'
-#set __fish_git_prompt_showstashstate 'yes'
-#set __fish_git_prompt_showupstream 'yes'
-#set __fish_git_prompt_showuntrackedfiles 'yes'
-#set __fish_git_prompt_show_informative_status 'yes'
-#set __fish_git_prompt_showcolorhints 'yes'
+set __fish_git_prompt_showdirtystate 'yes'
+set __fish_git_prompt_showstashstate 'yes'
+set __fish_git_prompt_showuntrackedfiles 'yes'
+set __fish_git_prompt_showupstream 'yes'
+set __fish_git_prompt_color_branch yellow
+set __fish_git_prompt_color_upstream_ahead green
+set __fish_git_prompt_color_upstream_behind red
 
-function fish_prompt
-    set last_status $status
-    if [ (whoami) = 'root' ]
-      # something simple for root user
-      printf '%s[%s]%s # %s' (set_color 555) (pwd) (set_color --bold red) (set_color normal)
-    else
-      set_color $fish_color_cwd
-      printf '%s %s' (date "+$c2%H$c0:$c2%M$c0:$c2%S") (prompt_pwd)
-      set_color normal
-
-      printf '%s ' (__fish_git_prompt)
-
-      set_color normal
-    end
-end
+# Status Chars
+set __fish_git_prompt_char_dirtystate ''
+set __fish_git_prompt_char_stagedstate '→'
+set __fish_git_prompt_char_untrackedfiles '☡'
+set __fish_git_prompt_char_stashstate '↩'
+set __fish_git_prompt_char_upstream_ahead '+'
+set __fish_git_prompt_char_upstream_behind '-'
 
 function fish_right_prompt -d "Write out the right prompt"
   if test $status -eq 0
