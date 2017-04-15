@@ -123,3 +123,5 @@ cygwin*)
 esac
 
 eval `gdircolors ~/dotfiles/dircolors.ansi-light`
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

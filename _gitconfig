@@ -1,6 +1,6 @@
 [user]
-  name = ahirugumi
-  email = puts.helloworld@nifty.com
+	name = 
+	email = 
 [alias]
   tree = log --graph --all --format=\"%x09%C(magenta ul)%an%Creset%x09%C(blue)%h%Creset %C(green reverse)%d%Creset %s\"
 [color]
@@ -8,8 +8,17 @@
 [core]
   editor = vim
   quotepath = false
+	excludesfile = /Users/ahirugumi/.gitignore_global
 [log]
   decorate = short
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/ahirugumi/.stCommitMsg
